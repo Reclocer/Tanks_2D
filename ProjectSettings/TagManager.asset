@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Monster
+    uniqueID: 641218903
+    locked: 0
+  - name: Tank
+    uniqueID: 997840419
+    locked: 0
