@@ -1,0 +1,25 @@
+﻿using UnityEngine;
+using Corebin.Tanks.Weapons.Projectiles;
+
+namespace Corebin.Tanks.Weapons
+{
+    public class Gun : WeaponBase
+    {
+        [SerializeField] protected Projectile _projectile;
+
+        public override void Initialize(Team teamNumber)
+        {
+            base.Initialize(teamNumber);
+        }
+
+        public override void TriggerFire()
+        {
+            if (!_readyToFire)
+                return;
+
+            var proj = Instantiate(_projectile, _barrel.position, _barrel.rotation);
+            proj.Initialize(_teamNumber);
+            StartCoroutine(Reload(_cooldown));
+        }
+    }
+}
