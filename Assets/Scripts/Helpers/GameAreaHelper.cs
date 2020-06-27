@@ -73,9 +73,7 @@ namespace Corebin.Helpers
             float topBound = screenBounds.y - objectBounds.size.y / 2;
             float bottomBound = -screenBounds.y + objectBounds.size.y / 2;
             float positionY = Mathf.Clamp(pos, bottomBound, topBound);
-
-            Debug.Log($"{pos}  {positionY}");
-
+              
             if (pos > positionY)
             {
                 objectPosition = new Vector3(objectPosition.x, topBound, objectPosition.z);

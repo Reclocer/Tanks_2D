@@ -63,7 +63,7 @@ namespace Corebin.Tanks.UnitControllers.CustomControllers
             if (_userControl == null)
                 return;
 
-            if (_userControl.Key)
+            if (_userControl.MainGunFire)
             {
                 fireSystem.TriggerFire();
             }

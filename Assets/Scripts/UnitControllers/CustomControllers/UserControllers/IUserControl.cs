@@ -7,6 +7,6 @@ namespace Corebin.Tanks.UnitControllers
         float Forward { get; }
         float Right { get; }
         
-        bool Key { get; }
+        bool MainGunFire { get; }
     }
 }

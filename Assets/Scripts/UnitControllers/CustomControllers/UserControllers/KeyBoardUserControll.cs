@@ -9,25 +9,27 @@ namespace Corebin.Tanks.UnitControllers
         /// </summary>
         public float Forward => _forward;
         private float _forward;
-
-
+        
+        /// <summary>
+        /// Rotate to the right 
+        /// </summary>
         public float Right => _right;
         private float _right;
 
         /// <summary>
-        /// GetKey(KeyCode)
+        /// Main gun fire
         /// </summary>
-        public bool Key => _key;
-        private bool _key;
+        public bool MainGunFire => _mainGunFire;
+        private bool _mainGunFire;
         
         public Object Object => this;
         
         void Update()
         {
             _forward = Input.GetAxis("Vertical");            
-            _right = -Input.GetAxis("Horizontal");
+            _right =  -Input.GetAxis("Horizontal");
             
-            _key = Input.GetKey(KeyCode.Space);
+            _mainGunFire = Input.GetKey(KeyCode.X);
         }
 
         public Object GetObject()
