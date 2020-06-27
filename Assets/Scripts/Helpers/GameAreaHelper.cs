@@ -32,12 +32,7 @@ namespace Corebin.Helpers
         /// <param name="objectBounds">Object bounds</param>
         /// <returns>Return true if object within GamePlayArea</returns>
         public static bool RestrictLateralMovement(ref Vector3 objectPosition, float deltaPositionX, Bounds objectBounds, Camera camera)
-        {
-            //TODO:
-            //Ищем ширину и высоту окна игры. 
-            //При каждом вызове этого метода нецелесообразно выполнять поиск параметров окна.
-            //Необходимо выполнять это событийно и в другом классе. 
-            //А сюда передавать screenBounds параметром. 
+        {             
             Vector2 screenBounds = camera.ScreenToWorldPoint(new Vector3(Screen.width,
                                                                          Screen.height,
                                                                          camera.transform.position.z));
@@ -69,12 +64,7 @@ namespace Corebin.Helpers
         /// <param name="objectBounds">Object bounds</param>
         /// <returns>Return true if object within GamePlayArea</returns>
         public static bool RestrictLongitudinalMovement(ref Vector3 objectPosition, float deltaPositionY, Bounds objectBounds, Camera camera)
-        {
-            //TODO:
-            //Ищем ширину и высоту окна игры. 
-            //При каждом вызове этого метода нецелесообразно выполнять поиск параметров окна.
-            //Необходимо выполнять это событийно и в другом классе. 
-            //А сюда передавать screenBounds параметром. 
+        {             
             Vector2 screenBounds = camera.ScreenToWorldPoint(new Vector3(Screen.width,
                                                                          Screen.height,
                                                                          camera.transform.position.z));
@@ -83,6 +73,8 @@ namespace Corebin.Helpers
             float topBound = screenBounds.y - objectBounds.size.y / 2;
             float bottomBound = -screenBounds.y + objectBounds.size.y / 2;
             float positionY = Mathf.Clamp(pos, bottomBound, topBound);
+
+            Debug.Log($"{pos}  {positionY}");
 
             if (pos > positionY)
             {

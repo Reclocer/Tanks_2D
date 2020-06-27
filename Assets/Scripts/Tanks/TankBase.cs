@@ -9,7 +9,7 @@ namespace Corebin.Tanks.Tanks
 {
     public abstract class TankBase : GameUnit, IDamagable
     {
-        [SerializeField] protected UnitController _tankController;
+        [SerializeField] protected TankController _tankController;
 
         public MovementSystem MovementSystem => _movementSystem;
         [SerializeField] protected MovementSystem _movementSystem;
