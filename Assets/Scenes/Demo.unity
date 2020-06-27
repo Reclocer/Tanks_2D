@@ -521,6 +521,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &818451685 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 603775950448435810, guid: 5422f23c8df76ee4d8cf4a59671e7ff5,
+    type: 3}
+  m_PrefabInstance: {fileID: 261831668}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c577ba559d8a994aaaa2bc4eed298dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &838967821 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3170344953689871448, guid: 5422f23c8df76ee4d8cf4a59671e7ff5,
@@ -558,7 +570,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869122741}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.59, z: 0}
+  m_LocalPosition: {x: -18.8, y: -2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 261831669}
@@ -575,7 +587,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 869122741}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -624,8 +636,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbe6f97e91afe7c44b9413a4b009a0b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _teamNumber: 0
-  _guns: []
+  _teamNumber: 1
+  _guns:
+  - {fileID: 818451685}
   _missileLauncher: []
 --- !u!114 &869122746
 MonoBehaviour:
