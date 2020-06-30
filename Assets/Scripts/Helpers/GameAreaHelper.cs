@@ -69,7 +69,7 @@ namespace Corebin.Helpers
                                                                          Screen.height,
                                                                          camera.transform.position.z));
 
-            float pos = objectPosition.y + deltaPositionY;
+            float pos = objectPosition.y + deltaPositionY;            
             float topBound = screenBounds.y - objectBounds.size.y / 2;
             float bottomBound = -screenBounds.y + objectBounds.size.y / 2;
             float positionY = Mathf.Clamp(pos, bottomBound, topBound);

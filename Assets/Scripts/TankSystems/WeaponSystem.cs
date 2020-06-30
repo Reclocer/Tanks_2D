@@ -13,7 +13,7 @@ namespace Corebin.Tanks.UnitSystems
         /// Which side
         /// </summary>
         public Team TeamNumber => _teamNumber;
-        [SerializeField] private Team _teamNumber;
+        private Team _teamNumber;
         
         [SerializeField] private List<Gun> _guns;
 

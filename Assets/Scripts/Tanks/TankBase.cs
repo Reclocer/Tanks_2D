@@ -36,14 +36,23 @@ namespace Corebin.Tanks.Tanks
           
         protected virtual void Start()
         {
-            _tankController.Initialize(this);
-            _weaponSystem.  Initialize(_teamNumber);
+            if (_tankController != null)
+            {
+                _tankController.Initialize(this);
+            }
+
+            _weaponSystem.Initialize(_teamNumber);
             
             //Health value normalize
             if (_health.Value > _maxHealth)
             {
                 _health.Value = _maxHealth;
             }
+        }
+
+        public virtual void SetController(TankController controller)
+        {
+            _tankController = controller;
         }
 
         public virtual void ApplyDamage(IDamageDealer damageDealer)

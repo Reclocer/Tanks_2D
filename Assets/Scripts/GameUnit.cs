@@ -6,5 +6,10 @@ namespace Corebin.Tanks
     {
         public Team TeamNumber => _teamNumber;
         [SerializeField] protected Team _teamNumber;
+
+        public void SetTeamNumber(Team team)
+        {
+            _teamNumber = team;
+        }
     }
 }

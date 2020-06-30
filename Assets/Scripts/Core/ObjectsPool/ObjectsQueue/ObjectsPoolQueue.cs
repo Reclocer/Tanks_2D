@@ -1,12 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Corebin.Core.ObjectsPool.ObjectsQueue
 {
-    public sealed class ObjectsPoolQueue<T>
+    [Serializable]
+    public sealed class ObjectsPoolQueue<T> 
     {
-        public Queue<T>[] Pools => _pools;
+        private int j = 0;
+
+        public  Queue<T>[] Pools => _pools;
         private Queue<T>[] _pools;
 
+        public int ObjectsCount => _objectsCount;
         private int _objectsCount = 64;
 
         #region Constructors
@@ -32,7 +38,7 @@ namespace Corebin.Core.ObjectsPool.ObjectsQueue
             _objectsCount = objectsCount;
         }
 
-        public ObjectsPoolQueue(int poolsCount, int objectsCount)
+        public ObjectsPoolQueue(int objectsCount, int poolsCount)
         {
             _pools = new Queue<T>[poolsCount];
 
@@ -77,10 +83,9 @@ namespace Corebin.Core.ObjectsPool.ObjectsQueue
         {
             for (int i = 0; i < _pools.Length; i++)
             {
-                T @object = _pools[i].Peek();
-
-                if (@object != null)
+                for (int j = 0; j < _pools[i].Count; j++)
                 {
+                    T @object = _pools[i].Peek();
                     return @object;
                 }
             }
@@ -90,33 +95,18 @@ namespace Corebin.Core.ObjectsPool.ObjectsQueue
 
         public T Dequeue()
         {
-            return NDequeue(0);
-        }
-
-        private T NDequeue(int i)
-        {
-            if (_pools[i].Count != 0)
+            for (int i = 0; i < _pools.Length; i++)
             {
-                T @object = _pools[i].Dequeue();
-
-                int j = i + 1;
-
-                if (j <= _pools.Length)
+                for (int j = 0; j < _pools[i].Count; j++)
                 {
-                    _pools[j].Enqueue(@object);
+                    T @object = _pools[i].Dequeue();
                     return @object;
                 }
-
-                _pools[i].Enqueue(@object);
-                return @object;
-            }
-            else if (_pools[i + 1] != null)
-            {
-                NDequeue(i + 1);
             }
 
             return default;
+        }       
+
+            #endregion Methods
         }
-        #endregion Methods
-    }
 }
