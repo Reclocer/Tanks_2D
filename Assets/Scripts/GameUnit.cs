@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Corebin.Helpers;
 
 namespace Corebin.Tanks
@@ -10,6 +11,11 @@ namespace Corebin.Tanks
 
         [SerializeField] protected SpriteRenderer _teamIndicator;
 
+        /// <summary>
+        /// Action after destroy this unit 
+        /// </summary>
+        public event Action UnitDestroyed = () => { };
+
         protected virtual void Start()
         {
             _team = TeamHolder.Instance.GetTeamByIndex(_team.TeamIndex);            
@@ -20,6 +26,12 @@ namespace Corebin.Tanks
         {
             _team = team;
             _teamIndicator.color = team.TeamColor;
+        }
+
+        protected virtual void DestroyUnit()
+        {
+            Destroy(gameObject);
+            UnitDestroyed();
         }
     }
 }

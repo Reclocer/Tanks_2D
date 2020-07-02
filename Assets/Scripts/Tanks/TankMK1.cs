@@ -17,9 +17,9 @@ namespace Corebin.Tanks.Tanks
             base.ApplyDamage(damageDealer);
         }
 
-        protected override void DestroyTank()
+        protected override void DestroyUnit()
         {
-            base.DestroyTank();
+            base.DestroyUnit();
         }
     }
 }

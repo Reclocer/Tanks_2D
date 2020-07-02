@@ -29,12 +29,12 @@ namespace Corebin.Tanks.Tanks
         /// </summary>
         public float MaxHealth => _maxHealth;
         [SerializeField] protected float _maxHealth = 1;
-        
+
         /// <summary>
-        /// Action after destroy this tank 
+        /// On change health value
         /// </summary>
-        public event Action TankDestroyed = () => { };
-          
+        public event Action<float> RefreshHealth = (health) => { };
+
         protected override void Start()
         {
             base.Start();
@@ -51,6 +51,8 @@ namespace Corebin.Tanks.Tanks
             {
                 _health.Value = _maxHealth;
             }
+
+            _health.AddAction((f) => { RefreshHealth(f); });
         }
 
         public virtual void SetController(TankController controller)
@@ -64,14 +66,13 @@ namespace Corebin.Tanks.Tanks
 
             if (_health.Value <= 0)
             {
-                DestroyTank();
+                DestroyUnit();
             }
         }
 
-        protected virtual void DestroyTank()
+        protected override void DestroyUnit()
         {
-            Destroy(gameObject);
-            TankDestroyed();
+            base.DestroyUnit();
         }
     }
 }
