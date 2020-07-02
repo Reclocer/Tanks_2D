@@ -41,9 +41,9 @@ namespace Corebin.Tanks.UnitControllers
             _forward = Input.GetAxis("Vertical");            
             _right =  -Input.GetAxis("Horizontal");
             
-            _weaponFire = Input.GetKey(KeyCode.X);
+            _weaponFire = Input.GetKey(KeyCode.Space);
 
-            _selectNextWeapon = Input.GetKeyDown(KeyCode.W);
+            _selectNextWeapon = Input.GetKeyDown(KeyCode.E);
             _selectPreviousWeapon = Input.GetKeyDown(KeyCode.Q);
         }
 
