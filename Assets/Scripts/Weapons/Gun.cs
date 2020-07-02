@@ -18,7 +18,7 @@ namespace Corebin.Tanks.Weapons
                 return;
 
             var proj = Instantiate(_projectile, _barrel.position, _barrel.rotation);
-            proj.Initialize(_teamNumber);
+            proj.Initialize(_team);
             StartCoroutine(Reload(_cooldown));
         }
     }

@@ -15,10 +15,10 @@ namespace Corebin.Tanks.Spawners
         [Space]        
         [SerializeField] private PoolContainer _poolContainer;
         [SerializeField] private Vector2 _spawnDelayRange;
-        [SerializeField] private Team _team = Team.Neutral;
+        [SerializeField] private Team _team;
         [SerializeField] private TankController _controller;
 
-        [SerializeField] private int _maxCountUnitsInArea = 10;
+        [SerializeField] private int _maxCountUnitsInArea = 8;
         [SerializeField] private int _currentCountUnitsInArea = 0;
 
         private ObjectsPoolQueue<GameObject> _objectsPoolQueue;
@@ -104,7 +104,7 @@ namespace Corebin.Tanks.Spawners
             if (_currentCountUnitsInArea < _maxCountUnitsInArea)
             {
                 @object.SetActive(true);
-                @object.GetComponent<GameUnit>().SetTeamNumber(team);
+                @object.GetComponent<GameUnit>().SetTeam(team);
                 _currentCountUnitsInArea++;
                 return true;
             }

@@ -15,8 +15,8 @@ namespace Corebin.Tanks.UnitSystems
         /// <summary>
         /// Which side
         /// </summary>
-        public Team TeamNumber => _teamNumber;
-        private Team _teamNumber;
+        public Team Team => _team;
+        private Team _team;
         
         [SerializeField] private List<WeaponBase> _guns;
         [SerializeField] private List<WeaponBase> _missileLauncher;
@@ -24,11 +24,11 @@ namespace Corebin.Tanks.UnitSystems
         private DoublyLinkedStacks<WeaponBase> _weapons;
         private WeaponBase _selectedWeapon;        
 
-        public void Initialize(Team teamNumber)
+        public void Initialize(Team team)
         {
-            _teamNumber = teamNumber;
-            _guns.ForEach(w => w.Initialize(teamNumber));
-            _missileLauncher.ForEach(w => w.Initialize(teamNumber));
+            _team = team;
+            _guns.ForEach(w => w.Initialize(team));
+            _missileLauncher.ForEach(w => w.Initialize(team));
 
             _weapons = new DoublyLinkedStacks<WeaponBase>(_guns, _missileLauncher);
             _selectedWeapon = _weapons.SelectedObj;

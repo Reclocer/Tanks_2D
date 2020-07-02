@@ -8,14 +8,14 @@ namespace Corebin.Tanks.Weapons
         [SerializeField] protected Transform _barrel;
         [SerializeField] protected float _cooldown;
 
-        public Team TeamNumber => _teamNumber;
-        protected Team _teamNumber;
+        public Team Team => _team;
+        protected Team _team;
 
         protected bool _readyToFire = true;
                        
-        public virtual void Initialize(Team teamNumber)
+        public virtual void Initialize(Team team)
         {
-            _teamNumber = teamNumber;
+            _team = team;
         }
 
         public abstract void TriggerFire(); 

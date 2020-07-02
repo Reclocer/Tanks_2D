@@ -9,6 +9,7 @@ namespace Corebin.Tanks.Tanks
 {
     public abstract class TankBase : GameUnit, IDamagable
     {
+        [Space]
         [SerializeField] protected TankController _tankController;
 
         public MovementSystem MovementSystem => _movementSystem;
@@ -34,14 +35,16 @@ namespace Corebin.Tanks.Tanks
         /// </summary>
         public event Action TankDestroyed = () => { };
           
-        protected virtual void Start()
+        protected override void Start()
         {
+            base.Start();
+
             if (_tankController != null)
             {
                 _tankController.Initialize(this);
             }
 
-            _weaponSystem.Initialize(_teamNumber);
+            _weaponSystem.Initialize(_team);
             
             //Health value normalize
             if (_health.Value > _maxHealth)

@@ -10,14 +10,14 @@ namespace Corebin.Tanks.Weapons.Projectiles
         /// <summary>
         /// Which side
         /// </summary>
-        public    Team  TeamNumber => _teamNumber;
-        protected Team _teamNumber;        
+        public    Team  Team => _team;
+        protected Team _team;        
 
         public float Damage => _damage;
 
-        public void Initialize(Team teamNumber)
+        public void Initialize(Team team)
         {
-            _teamNumber = teamNumber;
+            _team = team;
         }        
 
         protected void Update()
@@ -30,7 +30,7 @@ namespace Corebin.Tanks.Weapons.Projectiles
             var damagableObject = other.gameObject.GetComponent<IDamagable>();
             
             if (damagableObject != null &&
-                damagableObject.TeamNumber != TeamNumber)
+                damagableObject.Team != _team)
             {
                 damagableObject.ApplyDamage(this);
             }

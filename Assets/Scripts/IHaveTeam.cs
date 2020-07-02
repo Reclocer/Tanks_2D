@@ -2,6 +2,6 @@
 {
     public interface IHaveTeam
     {
-        Team TeamNumber { get; }
+        Team Team { get; }        
     }
 }
