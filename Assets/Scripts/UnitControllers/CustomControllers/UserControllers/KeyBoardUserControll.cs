@@ -19,9 +19,21 @@ namespace Corebin.Tanks.UnitControllers
         /// <summary>
         /// Main gun fire
         /// </summary>
-        public bool MainGunFire => _mainGunFire;
-        private bool _mainGunFire;
-        
+        public bool WeaponFire => _weaponFire;
+        private bool _weaponFire;
+
+        /// <summary>
+        /// Select next weapon
+        /// </summary>
+        public bool SelectNextWeapon => _selectNextWeapon;
+        private bool _selectNextWeapon;
+
+        /// <summary>
+        /// Select previous weapon
+        /// </summary>
+        public bool SelectPreviousWeapon => _selectPreviousWeapon;
+        private bool _selectPreviousWeapon;
+
         public Object Object => this;
         
         void Update()
@@ -29,7 +41,10 @@ namespace Corebin.Tanks.UnitControllers
             _forward = Input.GetAxis("Vertical");            
             _right =  -Input.GetAxis("Horizontal");
             
-            _mainGunFire = Input.GetKey(KeyCode.X);
+            _weaponFire = Input.GetKey(KeyCode.X);
+
+            _selectNextWeapon = Input.GetKeyDown(KeyCode.W);
+            _selectPreviousWeapon = Input.GetKeyDown(KeyCode.Q);
         }
 
         public Object GetObject()

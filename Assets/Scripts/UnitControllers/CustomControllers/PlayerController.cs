@@ -5,17 +5,17 @@ using Corebin.Tanks.UnitControllers;
 using Corebin.Helpers;
 
 namespace Corebin.Tanks.UnitControllers.CustomControllers
-{
-    [RequireComponent(typeof(TankBase))]
+{    
     public class PlayerController : TankController
     {
+        [SerializeField] private Transform _unitTransform;
         [SerializeField] private SpriteRenderer _representation;
 
         private IUserControl _userControl;
 
-        public override void Initialize(TankBase spaceship)
+        public override void Initialize(TankBase tank)
         {
-            base.Initialize(spaceship);
+            base.Initialize(tank);
             _userControl = GetComponent<IUserControl>();
         }
 
@@ -39,9 +39,8 @@ namespace Corebin.Tanks.UnitControllers.CustomControllers
                 return;
 
             float forward = _userControl.Forward * Time.deltaTime;
-            Vector3 transformPosition = transform.position;
-                      
-
+            Vector3 transformPosition = _unitTransform.position;
+              
             if (GameAreaHelper.RestrictLateralMovement     (ref transformPosition, forward, _representation.bounds, Camera.main) 
              && GameAreaHelper.RestrictLongitudinalMovement(ref transformPosition, forward, _representation.bounds, Camera.main))
             {
@@ -49,7 +48,7 @@ namespace Corebin.Tanks.UnitControllers.CustomControllers
             }
             else
             {
-                transform.position = transformPosition;
+                _unitTransform.position = transformPosition;
                 Debug.Log("dont move");
             }
 
@@ -63,9 +62,31 @@ namespace Corebin.Tanks.UnitControllers.CustomControllers
             if (_userControl == null)
                 return;
 
-            if (_userControl.MainGunFire)
+            if (_userControl.WeaponFire)
             {
                 fireSystem.TriggerFire();
+            }
+        }
+
+        protected override void SelectNextWeapon(WeaponSystem fireSystem)
+        {
+            if (_userControl == null)
+                return;
+
+            if(_userControl.SelectNextWeapon)
+            {
+                fireSystem.SelectNextWeapon();
+            }
+        }
+
+        protected override void SelectPreviousWeapon(WeaponSystem fireSystem)
+        {
+            if (_userControl == null)
+                return;
+
+            if (_userControl.SelectPreviousWeapon)
+            {
+                fireSystem.SelectPreviousWeapon();
             }
         }
     }
