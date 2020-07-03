@@ -47,3 +47,6 @@ TagManager:
   - name: Tank
     uniqueID: 997840419
     locked: 0
+  - name: UI
+    uniqueID: 3980786473
+    locked: 0
