@@ -6,12 +6,7 @@ namespace Corebin.Tanks.Weapons
     public class Gun : WeaponBase
     {
         [SerializeField] protected Projectile _projectile;
-
-        public override void Initialize(Team teamNumber)
-        {
-            base.Initialize(teamNumber);
-        }
-
+                
         public override void TriggerFire()
         {
             if (!_readyToFire)
