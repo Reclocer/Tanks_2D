@@ -45,5 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _barrel: {fileID: 3436025376333345011}
   _cooldown: 0.3
-  _projectile: {fileID: 95892615681370294, guid: 66aea412c9bb8c74786a5d4d278685a2,
+  _projectile: {fileID: 7015170990133126922, guid: 66aea412c9bb8c74786a5d4d278685a2,
     type: 3}

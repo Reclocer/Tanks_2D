@@ -5,11 +5,9 @@ using UnityEngine;
 namespace Corebin.Core.ObjectsPool.ObjectsQueue
 {
     [Serializable]
-    public sealed class ObjectsPoolQueue<T> 
-    {
-        private int j = 0;
-
-        public  Queue<T>[] Pools => _pools;
+    public sealed class ObjectsPoolQueue<T>
+    {        
+        public Queue<T>[] Pools => _pools;
         private Queue<T>[] _pools;
 
         public int ObjectsCount => _objectsCount;
@@ -105,8 +103,8 @@ namespace Corebin.Core.ObjectsPool.ObjectsQueue
             }
 
             return default;
-        }       
-
-            #endregion Methods
         }
+
+        #endregion Methods
+    }
 }

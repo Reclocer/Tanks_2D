@@ -4,8 +4,8 @@ namespace Corebin.Tanks.Weapons.Projectiles
 {
     public abstract class Projectile : MonoBehaviour, IDamageDealer
     {
-        [SerializeField] protected float _speed;
-        [SerializeField] protected float _damage;
+        [SerializeField] protected float _speed = 10;
+        [SerializeField] protected float _damage = 10;
 
         /// <summary>
         /// Which side
@@ -29,8 +29,8 @@ namespace Corebin.Tanks.Weapons.Projectiles
         {
             var damagableObject = other.gameObject.GetComponent<IDamagable>();
             
-            if (damagableObject != null &&
-                damagableObject.Team != _team)
+            if (damagableObject != null 
+             && damagableObject.Team != _team)
             {
                 damagableObject.ApplyDamage(this);
             }
