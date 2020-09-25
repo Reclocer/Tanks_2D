@@ -2,6 +2,7 @@
 
 namespace Corebin.Tanks.Weapons.Projectiles
 {
+    [RequireComponent(typeof(BoxCollider2D))]
     public abstract class Projectile : MonoBehaviour, IDamageDealer
     {
         [SerializeField] protected float _speed = 10;
